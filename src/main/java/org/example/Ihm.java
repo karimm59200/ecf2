@@ -87,6 +87,7 @@ public class Ihm {
         System.out.println("Adresse du centre : ");
         String adresse = scanner.nextLine();
         centreSportifService.create( new CentreSportif(nom, adresse));
+        System.out.println("Centre sportif créé");
     }
 
     private void deleteCentre() {
@@ -96,6 +97,7 @@ public class Ihm {
         scanner.nextLine();
         CentreSportif centreSportif = centreSportifService.findById(id);
         centreSportifService.delete(centreSportif);
+        System.out.println("Centre sportif supprimé");
     }
 
     private void updateCentre(){
@@ -112,6 +114,7 @@ public class Ihm {
         centreSportif.setAdresse(adresse);
 
         centreSportifService.update(centreSportif);
+        System.out.println("Centre sportif modifié");
     }
 
     private void creationActivite(){
@@ -142,7 +145,7 @@ public class Ihm {
 //        activiteService.create( new Activite(nom, description, lieu, horaire, centreSportif));
         activiteService.create(activite);
         //centreSportif.getActivites().add(activite);
-
+        System.out.println("Activité créée");
     }
 
     private void deleteActivite(){
@@ -154,6 +157,7 @@ public class Ihm {
         scanner.nextLine();
         Activite activite = activiteService.findById(id);
         activiteService.delete(activite);
+        System.out.println("Activité supprimée");
     }
 
     private void updateActivite(){
@@ -180,6 +184,7 @@ public class Ihm {
         activite.setHoraire(horaire);
         activiteService.update(activite);
         activite.setCentreSportif(centreSportifService.findById(idCentre));
+        System.out.println("Activité modifiée");
     }
 
      public void createAdherent() throws ParseException {
@@ -212,10 +217,9 @@ public class Ihm {
 
             adherentService.create(adherents);
             adherents.getActivites().add(activite);
-            System.out.println("**************");
-            System.out.println(activite);
-            activiteService.update(activiteService.findById(id));
 
+            activiteService.update(activiteService.findById(id));
+            System.out.println("Adhérent créé");
 
 
         } catch (Exception e) {
@@ -232,6 +236,7 @@ public class Ihm {
         Adherents adherents = adherentService.findById(id);
          System.out.println(adherents);
         adherentService.delete(adherents);
+        System.out.println("Adhérent supprimé");
 
     }
 
@@ -253,6 +258,7 @@ public class Ihm {
             adherents.setNom(nom);
             adherents.setPrenom(prenom);
             adherentService.update(adherents);
+            System.out.println("Adhérent modifié");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -263,6 +269,7 @@ public class Ihm {
         List<Adherents> adherents = adherentService.findAll();
         for (Adherents adherent : adherents) {
             System.out.println(adherent);
+
         }
     }
 
